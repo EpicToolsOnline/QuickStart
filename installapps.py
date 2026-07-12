@@ -9,7 +9,14 @@ def install_apps(filename):
 
     for name, package_id in apps.items():
         result = subprocess.run(
-            ["winget", "install", "--id", package_id, "-e"],
+            [
+                "winget", "install",
+                "--id", package_id,
+                "-e",
+                "--silent",
+                "--accept-package-agreements",
+                "--accept-source-agreements"
+            ],
             capture_output=True,
             text=True
         )
