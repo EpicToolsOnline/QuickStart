@@ -1,10 +1,11 @@
+#This is my test zone to test stuff
+
 import subprocess
+import json
 
-result = subprocess.run(
-    ["winget", "install", "--id", "Notepad++.Notepad++", "-e"],
-    capture_output=True,
-    text=True
-)
+with open("chosenapps.json") as f:
+    apps = json.load(f)
 
-print(result.stdout)
-print("Success!" if result.returncode == 0 else "Something went wrong")
+for name, package_id in apps.items():
+    result = subprocess.run(["winget", "install", "--id", package_id, "-e"], capture_output=True, text=True)
+    print(result.stdout)
