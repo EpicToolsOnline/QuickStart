@@ -68,9 +68,6 @@ def check_winget_available():
         return False
 
 def install_one_app(package_id):
-    # Not using capture_output here on purpose: that buffers everything until
-    # the process ends, which is exactly why installs looked "frozen" before.
-    # Streaming line by line lets winget's own progress print live instead.
     process = subprocess.Popen(
         [
             "winget", "install",
@@ -86,15 +83,14 @@ def install_one_app(package_id):
         bufsize=1,
     )
 
-    # Streaming removes subprocess.run's built-in timeout, so this timer
-    # does the same job: kill the process if it hangs past 5 minutes.
+    # Streaming instead of subprocess.run() means we lose the built-in
+    # timeout param, this timer does the same job manually.
     timer = threading.Timer(300, process.kill)
     timer.start()
 
     output_lines = []
     try:
         for line in process.stdout:
-            print(line, end="")
             output_lines.append(line)
         process.wait()
     finally:
@@ -117,7 +113,6 @@ def install_apps(apps_to_install):
     for token, info in apps_to_install.items():
         display_name = info["name"]
         print(f"\nInstalling {display_name}...")
-        print("-" * 40)
 
         try:
             status = install_one_app(info["id"])

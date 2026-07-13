@@ -16,5 +16,64 @@
     "Audacity": {"id": "Audacity.Audacity", "name": "Audacity"},
     "PowerToys": {"id": "Microsoft.PowerToys", "name": "Microsoft PowerToys"},
     "LibreOffice": {"id": "TheDocumentFoundation.LibreOffice", "name": "LibreOffice"},
-    "Thunderbird": {"id": "Mozilla.Thunderbird", "name": "Mozilla Thunderbird"}
+    "Thunderbird": {"id": "Mozilla.Thunderbird", "name": "Mozilla Thunderbird"},
+
+    "WinRAR": {"id": "RARLab.WinRAR", "name": "WinRAR"},
+    "CCleaner": {"id": "Piriform.CCleaner", "name": "CCleaner"},
+    "Everything": {"id": "voidtools.Everything", "name": "Everything"},
+    "ShareX": {"id": "ShareX.ShareX", "name": "ShareX"},
+    "Greenshot": {"id": "Greenshot.Greenshot", "name": "Greenshot"},
+    "Etcher": {"id": "Balena.Etcher", "name": "balenaEtcher"},
+    "Rufus": {"id": "Rufus.Rufus", "name": "Rufus"},
+    "CPUZ": {"id": "CPUID.CPU-Z", "name": "CPU-Z"},
+    "CrystalDiskInfo": {"id": "CrystalDewWorld.CrystalDiskInfo", "name": "CrystalDiskInfo"},
+    "HWMonitor": {"id": "CPUID.HWMonitor", "name": "HWMonitor"},
+    "FileZilla": {"id": "FileZilla.FileZilla", "name": "FileZilla"},
+    "qBittorrent": {"id": "qBittorrent.qBittorrent", "name": "qBittorrent"},
+
+    "NodeJS": {"id": "OpenJS.NodeJS", "name": "Node.js"},
+    "Python": {"id": "Python.Python.3.12", "name": "Python"},
+    "Temurin17": {"id": "EclipseAdoptium.Temurin.17.JDK", "name": "Eclipse Temurin 17 (Java)"},
+    "Docker": {"id": "Docker.DockerDesktop", "name": "Docker Desktop"},
+    "VirtualBox": {"id": "Oracle.VirtualBox", "name": "VirtualBox"},
+    "SublimeText": {"id": "SublimeHQ.SublimeText.4", "name": "Sublime Text"},
+    "IntelliJCommunity": {"id": "JetBrains.IntelliJIDEA.Community", "name": "IntelliJ IDEA Community"},
+    "PyCharmCommunity": {"id": "JetBrains.PyCharm.Community", "name": "PyCharm Community"},
+    "AndroidStudio": {"id": "Google.AndroidStudio", "name": "Android Studio"},
+    "Postman": {"id": "Postman.Postman", "name": "Postman"},
+    "UnityHub": {"id": "Unity.UnityHub", "name": "Unity Hub"},
+
+    "Brave": {"id": "BraveSoftware.BraveBrowser", "name": "Brave Browser"},
+    "Opera": {"id": "Opera.Opera", "name": "Opera"},
+    "TorBrowser": {"id": "TorProject.TorBrowser", "name": "Tor Browser"},
+
+    "Telegram": {"id": "Telegram.TelegramDesktop", "name": "Telegram"},
+    "WhatsApp": {"id": "WhatsApp.WhatsApp", "name": "WhatsApp"},
+    "TeamViewer": {"id": "TeamViewer.TeamViewer", "name": "TeamViewer"},
+    "Skype": {"id": "Microsoft.Skype", "name": "Skype"},
+    "Signal": {"id": "OpenWhisperSystems.Signal", "name": "Signal"},
+
+    "HandBrake": {"id": "HandBrake.HandBrake", "name": "HandBrake"},
+
+    "Inkscape": {"id": "Inkscape.Inkscape", "name": "Inkscape"},
+    "Krita": {"id": "KDE.Krita", "name": "Krita"},
+    "PaintDotNet": {"id": "dotPDN.PaintDotNet", "name": "Paint.NET"},
+    "Blender": {"id": "BlenderFoundation.Blender", "name": "Blender"},
+
+    "EpicGames": {"id": "EpicGames.EpicGamesLauncher", "name": "Epic Games Launcher"},
+    "GOGGalaxy": {"id": "GOG.Galaxy", "name": "GOG Galaxy"},
+    "BattleNet": {"id": "Blizzard.BattleNet", "name": "Battle.net"},
+    "EAApp": {"id": "ElectronicArts.EADesktopApp", "name": "EA App"},
+    "UbisoftConnect": {"id": "Ubisoft.Connect", "name": "Ubisoft Connect"},
+
+    "Malwarebytes": {"id": "Malwarebytes.Malwarebytes", "name": "Malwarebytes"},
+    "KeePassXC": {"id": "KeePassXCTeam.KeePassXC", "name": "KeePassXC"},
+    "Bitwarden": {"id": "Bitwarden.Bitwarden", "name": "Bitwarden"},
+
+    "Notion": {"id": "Notion.Notion", "name": "Notion"},
+    "Obsidian": {"id": "Obsidian.Obsidian", "name": "Obsidian"},
+    "Dropbox": {"id": "Dropbox.Dropbox", "name": "Dropbox"},
+    "AdobeReader": {"id": "Adobe.Acrobat.Reader.64-bit", "name": "Adobe Acrobat Reader"},
+    "FoxitReader": {"id": "Foxit.FoxitReader", "name": "Foxit PDF Reader"},
+    "SumatraPDF": {"id": "SumatraPDF.SumatraPDF", "name": "Sumatra PDF"}
 }
