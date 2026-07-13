@@ -2,6 +2,17 @@ import subprocess
 import json
 import sys
 import os
+import threading
+
+BANNER = r"""
++----------------------------------------+
+|                                          |
+|   Q U I C K S T A R T                   |
+|                                          |
+|   created by epictoolsonline.com        |
+|                                          |
++----------------------------------------+
+"""
 
 def resource_path(relative_path):
     if hasattr(sys, "_MEIPASS"):
@@ -40,7 +51,7 @@ def parse_requested_apps(filename, catalog):
         if token in catalog:
             requested[token] = catalog[token]
         else:
-            print(f"Unknown app in filename, skipping: {token} renember file names are case-sensitve.")
+            print(f"Unknown app in filename, skipping: {token} remember file names are case-sensitive.")
 
     return requested
 
@@ -56,47 +67,72 @@ def check_winget_available():
     except (FileNotFoundError, subprocess.CalledProcessError):
         return False
 
+def install_one_app(package_id):
+    # Not using capture_output here on purpose: that buffers everything until
+    # the process ends, which is exactly why installs looked "frozen" before.
+    # Streaming line by line lets winget's own progress print live instead.
+    process = subprocess.Popen(
+        [
+            "winget", "install",
+            "--id", package_id,
+            "-e",
+            "--silent",
+            "--accept-package-agreements",
+            "--accept-source-agreements"
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+    )
+
+    # Streaming removes subprocess.run's built-in timeout, so this timer
+    # does the same job: kill the process if it hangs past 5 minutes.
+    timer = threading.Timer(300, process.kill)
+    timer.start()
+
+    output_lines = []
+    try:
+        for line in process.stdout:
+            print(line, end="")
+            output_lines.append(line)
+        process.wait()
+    finally:
+        timer.cancel()
+
+    output_text = "".join(output_lines)
+
+    if process.returncode == 0:
+        return "installed"
+    elif "No available upgrade found" in output_text:
+        return "already installed"
+    elif process.returncode is None:
+        return "timed out"
+    else:
+        return "failed"
+
 def install_apps(apps_to_install):
     results = []
 
     for token, info in apps_to_install.items():
-        package_id = info["id"]
         display_name = info["name"]
+        print(f"\nInstalling {display_name}...")
+        print("-" * 40)
 
         try:
-            result = subprocess.run(
-                [
-                    "winget", "install",
-                    "--id", package_id,
-                    "-e",
-                    "--silent",
-                    "--accept-package-agreements",
-                    "--accept-source-agreements"
-                ],
-                capture_output=True,
-                text=True,
-                timeout=300
-            )
-
-            if result.returncode == 0:
-                status = "installed"
-            elif "No available upgrade found" in result.stdout:
-                status = "already installed"
-            else:
-                status = "failed"
-
-        except subprocess.TimeoutExpired:
-            status = "timed out"
+            status = install_one_app(info["id"])
         except Exception as e:
             status = f"error: {e}"
 
         results.append({"name": display_name, "status": status})
-        print(f"{display_name}: {status}")
+        print(f"-> {display_name}: {status}")
 
     return results
 
 
 if __name__ == "__main__":
+    print(BANNER)
+
     catalog = load_catalog()
 
     if not check_winget_available():
@@ -111,6 +147,9 @@ if __name__ == "__main__":
         print("No valid apps found in the filename, nothing to install. Reminder: App names are Case-Sensitive")
         input("Press Enter to exit...")
     else:
-        install_apps(apps_to_install)
-        print()
-        input("Done. Press Enter to exit...")
+        results = install_apps(apps_to_install)
+        print("\n" + "=" * 40)
+        print("Done. Summary:")
+        for r in results:
+            print(f"  {r['name']}: {r['status']}")
+        input("\nPress Enter to exit...")
