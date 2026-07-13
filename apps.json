@@ -1,6 +1,20 @@
 {
     "7zip": {"id": "7zip.7zip", "name": "7-Zip"},
     "Notepad++": {"id": "Notepad++.Notepad++", "name": "Notepad++"},
+    "VLC": {"id": "VideoLAN.VLC", "name": "VLC Media Player"},
+    "Chrome": {"id": "Google.Chrome", "name": "Google Chrome"},
+    "Firefox": {"id": "Mozilla.Firefox", "name": "Mozilla Firefox"},
+    "Discord": {"id": "Discord.Discord", "name": "Discord"},
+    "Spotify": {"id": "Spotify.Spotify", "name": "Spotify"},
+    "Steam": {"id": "Valve.Steam", "name": "Steam"},
+    "VSCode": {"id": "Microsoft.VisualStudioCode", "name": "Visual Studio Code"},
+    "Git": {"id": "Git.Git", "name": "Git"},
+    "OBS": {"id": "OBSProject.OBSStudio", "name": "OBS Studio"},
+    "GIMP": {"id": "GIMP.GIMP", "name": "GIMP"},
+    "Slack": {"id": "SlackTechnologies.Slack", "name": "Slack"},
+    "Zoom": {"id": "Zoom.Zoom", "name": "Zoom"},
     "Audacity": {"id": "Audacity.Audacity", "name": "Audacity"},
-    "Discord": {"id": "Discord.Discord", "name": "Discord"}
+    "PowerToys": {"id": "Microsoft.PowerToys", "name": "Microsoft PowerToys"},
+    "LibreOffice": {"id": "TheDocumentFoundation.LibreOffice", "name": "LibreOffice"},
+    "Thunderbird": {"id": "Mozilla.Thunderbird", "name": "Mozilla Thunderbird"}
 }
