@@ -43,7 +43,7 @@ Fork the repo, make your changes on a branch, open a pull request. All PRs need 
 Open an issue. Include what app you were trying to install, what the console output said, and your Windows version if relevant.
 
 ## Building the exe yourself
-```json
+```py
 "python -m PyInstaller --onefile --add-data "apps.json;." quickstart.py"
 ```
 Output lands in `dist/quickstart.exe`.
